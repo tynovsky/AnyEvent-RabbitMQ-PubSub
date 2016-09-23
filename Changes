@@ -1,0 +1,5 @@
+Revision history for Perl extension AnyEvent-RabbitMQ-PubSub
+
+3.0.1
+    - add to cpanfile Moose requirements (FIX)
+    - Publisher default_headers is Maybe[HashRef]
