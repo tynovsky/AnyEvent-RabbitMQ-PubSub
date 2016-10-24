@@ -8,6 +8,7 @@
 
 /carton.lock
 /.carton/
+/.carmel/
 /local/
 /cpanfile.snapshot
 
