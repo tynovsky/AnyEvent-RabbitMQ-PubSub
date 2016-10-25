@@ -34,14 +34,8 @@ my $routing_key = 'rk';
 
 my ($ar, $channel) = AnyEvent::RabbitMQ::PubSub::connect(%$rmq_connect_opts);
 
-my $publisher = AnyEvent::RabbitMQ::PubSub::Publisher->new(
-    channel     => $channel,
-    exchange    => $exchange,
-    routing_key => $routing_key,
-);
-$publisher->init();
+my $cv = AnyEvent->condvar;
 
-my @consumed;
 my $consumer = AnyEvent::RabbitMQ::PubSub::Consumer->new(
     channel     => $channel,
     exchange    => $exchange,
@@ -50,27 +44,41 @@ my $consumer = AnyEvent::RabbitMQ::PubSub::Consumer->new(
 );
 $consumer->init();
 
+my $publisher = AnyEvent::RabbitMQ::PubSub::Publisher->new(
+    channel     => $channel,
+    exchange    => $exchange,
+    routing_key => $routing_key,
+);
+$publisher->init();
 
-# receive what was sent
-my $cv = AnyEvent->condvar;
+my @consumed = ();
+my @messages = ('hello world', 'republish', 'hello again');
+
 
 $consumer->consume(
     $cv,
     sub {
         my ($self, $msg) = @_;
-        note "received ", $msg->{body}->payload;
         push @consumed, $msg->{body}->payload;
-        $self->channel->ack();
-        if ($msg->{body}->payload eq 'stop') {
-            $cv->send();
-        };
+        if ($msg->{body}->payload eq 'republish') {
+            if ($msg->{header}{headers}{trials}) {
+                $consumer->ack($msg);
+                $cv->send();
+            }
+            else {
+                $self->reject_and_republish($msg);
+            }
+        }
+        else {
+            $consumer->ack($msg);
+        }
     },
 );
-my @messages = ('hello world', 'hello again', 'stop');
+$consumer->init();
+
 $publisher->publish(body => $_) for @messages;
 
 $cv->recv;
 
-is_deeply([@consumed], [@messages], 'received what was sent');
-
+is_deeply([@consumed], [@messages, 'republish'], 'republish worked');
 

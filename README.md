@@ -50,7 +50,7 @@ AnyEvent::RabbitMQ::PubSub - Publish and consume RabbitMQ messages.
         },
     );
     $consumer->init(); #declares channel, queue and binding
-    $consumer->consume()
+    $consumer->consume();
 
     my $publisher = AnyEvent::RabbitMQ::PubSub::Publisher->new(
         channel     => $channel,

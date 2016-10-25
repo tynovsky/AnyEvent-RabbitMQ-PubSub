@@ -4,8 +4,10 @@ use strict;
 use warnings;
 use AnyEvent;
 use AnyEvent::RabbitMQ;
+use Data::Dumper;
+use Carp qw(longmess);
 
-our $VERSION = "3.0.2";
+our $VERSION = "3.1.0";
 
 sub connect {
     my %connection_opts = @_;
@@ -49,14 +51,14 @@ sub _report_error {
     my ($cv, $why) = @_;
     if (ref($why)) {
         my $method_frame = $why->method_frame;
-        $cv->croak(
+        $cv->croak(longmess(
             sprintf '%s: %s',
             $method_frame->reply_code || 503,
             $method_frame->reply_text || 'Something went wrong.',
-        );
+        ));
     }
     else {
-        $cv->croak($why);
+        $cv->croak(longmess(Dumper($why)));
     }
 }
 
@@ -117,7 +119,7 @@ AnyEvent::RabbitMQ::PubSub - Publish and consume RabbitMQ messages.
         },
     );
     $consumer->init(); #declares channel, queue and binding
-    $consumer->consume()
+    $consumer->consume();
 
     my $publisher = AnyEvent::RabbitMQ::PubSub::Publisher->new(
         channel     => $channel,
