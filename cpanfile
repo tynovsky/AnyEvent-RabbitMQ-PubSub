@@ -17,4 +17,6 @@ on 'develop' => sub {
     requires 'Test::PAUSE::Permissions';
     requires 'Test::Pod';
     requires 'Test::Spellunker';
+    requires 'Version::Next';
+    requires 'CPAN::Uploader';
 };
