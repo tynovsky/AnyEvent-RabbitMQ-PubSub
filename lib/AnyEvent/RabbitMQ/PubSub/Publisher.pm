@@ -24,6 +24,7 @@ sub init {
     $self->channel->declare_exchange(
         %{ $self->exchange },
         on_success => sub { $cv->send() },
+        on_failure => sub { $cv->croak(@_) },
     );
 
     $cv->recv();

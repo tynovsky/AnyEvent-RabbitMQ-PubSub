@@ -1,6 +1,7 @@
 Revision history for Perl extension AnyEvent-RabbitMQ-PubSub
 
 {{$NEXT}}
+    - croak on declare/bind errors
 
 3.1.0 2016-10-25T10:43:36Z
     - ack and reject_and_republish methods in consumer

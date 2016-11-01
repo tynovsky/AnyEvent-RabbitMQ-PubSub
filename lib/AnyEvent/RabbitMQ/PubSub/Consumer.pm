@@ -31,8 +31,9 @@ sub init {
     my $cv = AnyEvent->condvar;
 
     $self->declare_exchange_and_queue()
-        ->then(sub { $self->bind_queue() })
-        ->then(sub { $cv->send() });
+        ->then( sub { $self->bind_queue() })
+        ->then( sub { $cv->send() })
+        ->catch(sub { $cv->croak(@_) });
 
     $cv->recv();
     return
@@ -99,6 +100,7 @@ sub declare_queue {
     $self->channel->declare_queue(
         %{ $self->queue },
         on_success => sub { $d->resolve() },
+        on_failure => sub { $d->reject(@_) },
     );
     return $d->promise()
 }
@@ -110,6 +112,7 @@ sub declare_exchange {
     $self->channel->declare_exchange(
         %{ $self->exchange },
         on_success => sub { $d->resolve() },
+        on_failure => sub { $d->reject(@_) },
     );
     return $d->promise()
 }
@@ -123,6 +126,7 @@ sub bind_queue {
         exchange    => $self->exchange->{exchange},
         routing_key => $self->routing_key,
         on_success  => sub { $d->resolve() },
+        on_failure => sub { $d->reject(@_) },
     );
     return $d->promise()
 }
