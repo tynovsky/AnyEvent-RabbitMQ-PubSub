@@ -71,7 +71,7 @@
          "web" : "https://github.com/tynovsky/AnyEvent-RabbitMQ-PubSub"
       }
    },
-   "version" : "3.1.0",
+   "version" : "3.1.1",
    "x_authority" : "cpan:TYNOVSKY",
    "x_contributors" : [
       "tynovsky <tynovsky@seznam.cz>"
