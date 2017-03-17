@@ -37,6 +37,7 @@ sub publish {
     $self->channel->publish(
         exchange    => $self->exchange->{exchange},
         routing_key => $self->routing_key,
+        on_inactive => sub { die 'Failed to publish: channel inactive' },
         %options,
         header      => $options{header} // $self->default_header,
         body        => $options{body} // '',
