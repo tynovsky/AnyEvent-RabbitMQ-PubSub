@@ -2,6 +2,9 @@ Revision history for Perl extension AnyEvent-RabbitMQ-PubSub
 
 {{$NEXT}}
 
+3.1.2 2017-03-17T13:06:26Z
+    - die on on_inactive error
+
 3.1.1 2016-11-01T16:35:28Z
     - croak on declare/bind errors
 
