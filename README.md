@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/tynovsky/AnyEvent-RabbitMQ-PubSub.svg?branch=master)](https://travis-ci.org/tynovsky/AnyEvent-RabbitMQ-PubSub)
+[![Build Status](https://travis-ci.org/JaSei/AnyEvent-RabbitMQ-PubSub.svg?branch=master)](https://travis-ci.org/JaSei/AnyEvent-RabbitMQ-PubSub)
 # NAME
 
 AnyEvent::RabbitMQ::PubSub - Publish and consume RabbitMQ messages.
@@ -46,9 +46,9 @@ AnyEvent::RabbitMQ::PubSub - Publish and consume RabbitMQ messages.
     $consumer->consume(
         $cv,
         sub {
-            my ($self, $msg) = @_;
+            my ($consumer, $msg) = @_;
             print 'received ', $msg->{body}->payload, "\n";
-            $self->channel->ack();
+            $consumer->ack($msg);
             $cv->send();
         },
     );
