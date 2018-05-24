@@ -1,6 +1,7 @@
 Revision history for Perl extension AnyEvent-RabbitMQ-PubSub
 
 {{$NEXT}}
+    - fix calling method_frame on object without this function
 
 3.1.2 2017-03-17T13:06:26Z
     - die on on_inactive error

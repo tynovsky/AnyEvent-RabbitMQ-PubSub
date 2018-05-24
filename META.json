@@ -4,7 +4,7 @@
       "Miroslav Tynovsky <tynovsky@avast.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v3.0.16, CPAN::Meta::Converter version 2.150010",
+   "generated_by" : "Minilla/v3.1.0, CPAN::Meta::Converter version 2.150010",
    "license" : [
       "perl_5"
    ],
@@ -75,7 +75,9 @@
    "x_authority" : "cpan:TYNOVSKY",
    "x_contributors" : [
       "Jan Seidl <seidl@avast.com>",
+      "Mohelníková Lucie <mohelnikova@avast.com>",
       "tynovsky <tynovsky@seznam.cz>"
    ],
-   "x_serialization_backend" : "JSON::PP version 2.27300_01"
+   "x_serialization_backend" : "JSON::PP version 2.27300_01",
+   "x_static_install" : 1
 }
