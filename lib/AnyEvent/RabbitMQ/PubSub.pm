@@ -7,7 +7,7 @@ use AnyEvent::RabbitMQ;
 use Data::Dumper;
 use Carp qw(longmess);
 
-our $VERSION = "3.1.3";
+our $VERSION = "3.2.1";
 
 sub connect {
     my %connection_opts = @_;
