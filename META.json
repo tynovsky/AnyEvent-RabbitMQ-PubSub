@@ -10,7 +10,7 @@
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
-      "version" : "2"
+      "version" : 2
    },
    "name" : "AnyEvent-RabbitMQ-PubSub",
    "no_index" : {
@@ -78,6 +78,6 @@
       "Mohelníková Lucie <mohelnikova@avast.com>",
       "tynovsky <tynovsky@seznam.cz>"
    ],
-   "x_serialization_backend" : "JSON::PP version 2.27300_01",
+   "x_serialization_backend" : "JSON::PP version 2.94",
    "x_static_install" : 1
 }
