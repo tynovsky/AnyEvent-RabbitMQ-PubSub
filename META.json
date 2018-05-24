@@ -4,13 +4,13 @@
       "Miroslav Tynovsky <tynovsky@avast.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v3.0.10, CPAN::Meta::Converter version 2.150005",
+   "generated_by" : "Minilla/v3.1.0, CPAN::Meta::Converter version 2.150010",
    "license" : [
       "perl_5"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
-      "version" : "2"
+      "version" : 2
    },
    "name" : "AnyEvent-RabbitMQ-PubSub",
    "no_index" : {
@@ -62,19 +62,22 @@
    "release_status" : "unstable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/JaSei/AnyEvent-RabbitMQ-PubSub/issues"
+         "web" : "https://github.com/avast/AnyEvent-RabbitMQ-PubSub/issues"
       },
-      "homepage" : "https://github.com/JaSei/AnyEvent-RabbitMQ-PubSub",
+      "homepage" : "https://github.com/avast/AnyEvent-RabbitMQ-PubSub",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/JaSei/AnyEvent-RabbitMQ-PubSub.git",
-         "web" : "https://github.com/JaSei/AnyEvent-RabbitMQ-PubSub"
+         "url" : "git://github.com/avast/AnyEvent-RabbitMQ-PubSub.git",
+         "web" : "https://github.com/avast/AnyEvent-RabbitMQ-PubSub"
       }
    },
-   "version" : "3.1.2",
+   "version" : "3.2.1",
    "x_authority" : "cpan:TYNOVSKY",
    "x_contributors" : [
+      "Jan Seidl <seidl@avast.com>",
+      "Mohelníková Lucie <mohelnikova@avast.com>",
       "tynovsky <tynovsky@seznam.cz>"
    ],
-   "x_serialization_backend" : "JSON::PP version 2.27400"
+   "x_serialization_backend" : "JSON::PP version 2.94",
+   "x_static_install" : 1
 }
